@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.css";
+import { OBJLoader2Parallel } from "three/examples/jsm/loaders/OBJLoader2Parallel";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  useEffect(() => {
+    (async () => {
+      await new Promise((res) =>
+        new OBJLoader2Parallel().load(`http://localhost:8080/model.obj`, (model) =>
+          res(model)
+        )
+      );
+    })();
+  }, []);
+
+  return <div className="App"></div>;
 }
 
 export default App;
