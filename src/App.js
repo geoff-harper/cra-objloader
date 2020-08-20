@@ -12,6 +12,7 @@ function App() {
           (model) => res(model)
         )
       );
+      model.position.set(0, 0, 0);
 
       const scene = new Scene();
       const camera = new PerspectiveCamera(
@@ -21,12 +22,13 @@ function App() {
         1000
       );
 
-      const renderer = new WebGLRenderer();
+      const renderer = new WebGLRenderer({ alpha: true });
       renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
       document.body.appendChild(renderer.domElement);
 
       scene.add(model);
-      camera.position.z = 5;
+      camera.position.z = 50;
+      camera.lookAt(0, 0, 0);
 
       const animate = () => {
         requestAnimationFrame(animate);
@@ -36,7 +38,7 @@ function App() {
     })();
   }, []);
 
-  return <div className="App"></div>;
+  return <div className="App" />;
 }
 
 export default App;
