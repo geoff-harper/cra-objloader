@@ -1,9 +1,8 @@
-```
-yarn server
-```
+## Dev env
+Terminal 1: `yarn server`
+Terminal 2: `yarn start`
 
 
-```
-yarn build
-yarn http-server ./build
-```
+## Prod env
+Terminal 1: `yarn server`
+Terminal 2: `yarn build && yarn http-server ./build`
